@@ -14,11 +14,18 @@
 
 
 <ion-content padding>
-  <p *ngIf="!(shoppingListRef$ | async)" class="text-center">Retrieving data...</p>
-  <ion-list>
-    <ion-item *ngFor="let item of shoppingListRef$ | async" (click)="selectShoppingItem(item)">
-      <h2>{{item.itemName}}</h2>
-      <p>{{item.itemNumber}}</p>
-    </ion-item>
-  </ion-list>
+  <div text-center *ngIf="!(shoppingListRef$ | async) else template">
+    <ion-spinner  name="crescent"></ion-spinner>
+  </div>
+
+  <ng-template #template>
+    <p *ngIf="!(shoppingListRef$ | async)?.length">There is no item.</p>
+    
+    <ion-list>
+      <ion-item [ngClass]="{'done':item.completed}" *ngFor="let item of shoppingListRef$ | async" (click)="selectShoppingItem(item)">
+        <h2>{{item.itemName}}</h2>
+        <p>{{item.itemNumber}}</p>
+      </ion-item>
+    </ion-list>
+  </ng-template>
 </ion-content>

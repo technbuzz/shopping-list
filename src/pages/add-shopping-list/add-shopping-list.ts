@@ -31,8 +31,10 @@ export class AddShoppingListPage {
     console.log(shoppingItem);
     this.shoppingItemRef$.push({
       itemName : shoppingItem.itemName,
-      itemNumber : Number(shoppingItem.itemNumber)
+      itemNumber : Number(shoppingItem.itemNumber),
+      completed: false
     })
+
 
     // reset our shoppingItem
     this.shoppingItem = {} as ShoppingItem;

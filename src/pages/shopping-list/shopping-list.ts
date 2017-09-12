@@ -32,33 +32,43 @@ export class ShoppingListPage {
     this.navCtrl.push('AddShoppingListPage')
   }
   selectShoppingItem(shoppingItem: ShoppingItem){
-    // let actionSheet = this.asc.create({
-    //   title: `${shoppingItem.itemName}`,
-    //   buttons: [
-    //     {
-    //       text: 'Edit',
-    //       handler: () => {
+    let actionSheet = this.asc.create({
+      title: `${shoppingItem.itemName}`,
+      buttons: [
+        {
+          text: 'Edit',
+          handler: () => {
             
-    //       }
-    //     },
-    //     {
-    //       text: 'Remove',
-    //       handler: () => {
-
-    //       }
-    //     },
-    //     {
-    //       text: 'Cancel',
-    //       handler: () => {
-    //         console.log('User Selected the cancel option');
+          }
+        },
+        {
+          text: 'Remove',
+          role: 'destructive',
+          handler: () => {
+            this.shoppingListRef$.remove(shoppingItem.$key)
+          }
+        },
+        {
+          text: shoppingItem.completed ? 'Pending' : 'Done',
+          handler: () => {
+            this.shoppingListRef$.update(shoppingItem.$key, 
+              { completed: shoppingItem.completed = !shoppingItem.completed }
+            )
+          }
+        },
+        {
+          text: 'Cancel',
+          role: 'cancel',
+          handler: () => {
+            console.log('User Selected the cancel option');
             
-    //       }
-    //     }
-    //   ]
+          }
+        }
+      ]
 
-    // })
+    })
 
-    // actionSheet.present();
+    actionSheet.present();
   }
 
 }
