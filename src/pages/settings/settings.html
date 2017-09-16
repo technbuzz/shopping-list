@@ -6,8 +6,9 @@
 -->
 <ion-header>
 
+
   <ion-navbar>
-    <ion-title>Settings</ion-title>
+    <ion-title>{{'SETTINGS' | translate}}</ion-title>
   </ion-navbar>
 
 </ion-header>
@@ -15,8 +16,8 @@
 
 <ion-content padding>
 <ion-item>
-  <ion-label>Select Language</ion-label>
-  <ion-select>
+  <ion-label>{{'CLANG' | translate}}</ion-label>
+  <ion-select (ionChange)="changeLanguage()" name="language" [(ngModel)]="language">
     <ion-option value="en">English</ion-option>
     <ion-option value="ur">Urdu</ion-option>
   </ion-select>

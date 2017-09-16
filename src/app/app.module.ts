@@ -1,4 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
+import { Http, HttpModule } from "@angular/http";
 import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -6,6 +7,8 @@ import { StatusBar } from '@ionic-native/status-bar';
 
 import { AngularFireModule } from "angularfire2";
 import { AngularFireDatabaseModule } from "angularfire2/database";
+import { TranslateModule, TranslateLoader } from "@ngx-translate/core"
+import { TranslateHttpLoader } from "@ngx-translate/http-loader";
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
@@ -16,6 +19,7 @@ import { HomePage } from '../pages/home/home';
     HomePage
   ],
   imports: [
+    HttpModule,
     BrowserModule,
     IonicModule.forRoot(MyApp),
     AngularFireModule.initializeApp({
@@ -26,7 +30,14 @@ import { HomePage } from '../pages/home/home';
       storageBucket: "fir-crud-b89fa.appspot.com",
       messagingSenderId: "778467373835"
     }),
-    AngularFireDatabaseModule
+    AngularFireDatabaseModule,
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader, 
+        useFactory: (createTranslateLoader), 
+        deps:[Http]
+      }
+    })
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -40,3 +51,7 @@ import { HomePage } from '../pages/home/home';
   ]
 })
 export class AppModule {}
+
+export function createTranslateLoader(http: Http) {
+  return new TranslateHttpLoader(http, './assets/i18n/', '.json')
+}
