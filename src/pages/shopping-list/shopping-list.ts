@@ -28,6 +28,10 @@ export class ShoppingListPage {
     console.log('ionViewDidLoad ShoppingListPage');
   }
 
+  viewSettings(){
+    this.navCtrl.push('SettingsPage');
+  }
+
   addItem(){
     this.navCtrl.push('AddShoppingListPage')
   }
