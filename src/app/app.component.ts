@@ -4,6 +4,7 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { TranslateService } from "@ngx-translate/core";
+import { PreferencesProvider } from "../providers/preferences/preferences";
 
 
 import { HomePage } from '../pages/home/home';
@@ -17,9 +18,11 @@ export class MyApp {
     platform: Platform, 
     statusBar: StatusBar, 
     splashScreen: SplashScreen,
-    translate: TranslateService
+    translate: TranslateService,
+    pService: PreferencesProvider
   ) {
-    translate.setDefaultLang('en');
+    translate.setDefaultLang(pService.currentLang);
+    
     
     platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
