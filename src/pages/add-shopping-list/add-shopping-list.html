@@ -1,7 +1,7 @@
 <ion-header>
 
-  <ion-navbar>
-    <ion-title>Add Shopping List</ion-title>
+  <ion-navbar color="secondary">
+    <ion-title>{{'ADD' | translate}}</ion-title>
   </ion-navbar>
 
 </ion-header>
@@ -9,13 +9,13 @@
 
 <ion-content padding>
   <ion-item>
-    <ion-label stacked>Item Name</ion-label>
+    <ion-label stacked>{{'NAME' | translate}}</ion-label>
     <ion-input type="text" [(ngModel)]="shoppingItem.itemName"></ion-input>
   </ion-item>
   <ion-item>
-    <ion-label stacked>Item Number</ion-label>
+    <ion-label stacked>{{'NUMBER' | translate}}</ion-label>
     <ion-input type="number" [(ngModel)]="shoppingItem.itemNumber"></ion-input>
   </ion-item>
 
-  <button ion-button block (click)="addShoppingItem(shoppingItem)">Add</button>
+  <button ion-button block (click)="addShoppingItem(shoppingItem)">{{'BTNADD'| translate}}</button>
 </ion-content>

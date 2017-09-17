@@ -1,12 +1,16 @@
 {
   "TITLE":"Shopping List",
   "SETTINGS": "Settings",
-  "ADD": "Add Item",
+  "ADD": "Add New Item",
   "EDIT":"Edit",
   "DONE":"Done",
   "PENDING":"Pending",
   "REMOVE":"Remove",
   "CANCEL":"Cancel",
 
-  "CLANG":"Change Language"
+  "CLANG":"Change Language",
+
+  "NAME":"Item Name",
+  "NUMBER":"Item Number",
+  "BTNADD":"Add"
 }
