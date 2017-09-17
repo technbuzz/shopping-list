@@ -29,11 +29,6 @@ export class ShoppingListPage {
 
   ionViewDidLoad() {
     console.log("ionViewDidLoad ShoppingListPage");
-    this.translate
-      .get(["EDIT", "DONE", "PENDING", "REMOVE", "CANCEL"])
-      .subscribe(resp => {
-        this.buttonTexts = resp;
-      });
   }
 
   viewSettings() {
@@ -44,6 +39,11 @@ export class ShoppingListPage {
     this.navCtrl.push("AddShoppingListPage");
   }
   selectShoppingItem(shoppingItem: ShoppingItem) {
+    this.translate
+      .get(["EDIT", "DONE", "PENDING", "REMOVE", "CANCEL"])
+      .subscribe(resp => {
+        this.buttonTexts = resp;
+      });
     let actionSheet = this.asc.create({
       title: `${shoppingItem.itemName}`,
       buttons: [
