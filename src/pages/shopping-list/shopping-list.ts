@@ -82,4 +82,8 @@ export class ShoppingListPage {
 
     actionSheet.present();
   }
+
+  clearItems(){
+    alert('This feature is not implemented yet');
+  }
 }

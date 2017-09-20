@@ -31,4 +31,10 @@
       </ion-item>
     </ion-list>
   </ng-template>
+
+  <ion-fab bottom right>
+    <button color="light" ion-fab mini (click)="clearItems()"><ion-icon name="trash"></ion-icon></button>
+    <button color="secondary" ion-fab (click)="addItem()"><ion-icon name="add" ></ion-icon></button>
+  </ion-fab>
+
 </ion-content>
