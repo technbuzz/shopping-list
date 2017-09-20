@@ -11,6 +11,7 @@ import { ShoppingItem } from "../../modals/shopping-item/shopping-item.interface
 export class EditShoppingItemPage {
 
   shoppingItemRef$: FirebaseObjectObservable<ShoppingItem>;
+  shoppingItem = {} as ShoppingItem;
 
   constructor(
     public navCtrl: NavController, 
@@ -25,8 +26,13 @@ export class EditShoppingItemPage {
   ionViewDidLoad() {
     this.shoppingItemRef$.subscribe(res=>{
       console.log(res);
+      this.shoppingItem = res;
     })
-    console.log('ionViewDidLoad EditShoppingItemPage');
+  }
+
+  editShoppingItem(shoppingItem: ShoppingItem){
+    this.shoppingItemRef$.update(shoppingItem);
+    this.navCtrl.pop();
   }
 
 }

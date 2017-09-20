@@ -6,13 +6,22 @@
 -->
 <ion-header>
 
-  <ion-navbar>
-    <ion-title>Edit Shopping Item</ion-title>
+  <ion-navbar color="edit">
+    <ion-title>{{shoppingItem.name}}</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
+  <ion-item>
+    <ion-label stacked>{{'NAME' | translate}}</ion-label>
+    <ion-input type="text" [(ngModel)]="shoppingItem.itemName"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label stacked>{{'NUMBER' | translate}}</ion-label>
+    <ion-input type="number" [(ngModel)]="shoppingItem.itemNumber"></ion-input>
+  </ion-item>
 
+  <button ion-button block (click)="editShoppingItem(shoppingItem)">{{'BTNEDIT' | translate}}</button>
 </ion-content>

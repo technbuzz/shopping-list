@@ -22,7 +22,7 @@
   </div>
 
   <ng-template #template>
-    <p *ngIf="!(shoppingListRef$ | async)?.length">There is no item.</p>
+    <p *ngIf="!(shoppingListRef$ | async)?.length">{{ 'NOITEM' | translate }}</p>
     
     <ion-list>
       <ion-item [ngClass]="{'done':item.completed}" *ngFor="let item of shoppingListRef$ | async" (click)="selectShoppingItem(item)">

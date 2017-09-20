@@ -12,5 +12,8 @@
 
   "NAME":"Item Name",
   "NUMBER":"Item Number",
-  "BTNADD":"Add"
+  "BTNADD":"Add",
+  "BTNEDIT":"Edit Item",
+
+  "NOITEM":"There is no item."
 }
