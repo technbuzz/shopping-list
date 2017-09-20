@@ -11,9 +11,14 @@
 <ion-content padding>
 <ion-item>
   <ion-label>{{'CLANG' | translate}}</ion-label>
-  <ion-select (ionChange)="changeLanguage()" name="language" [(ngModel)]="language">
-    <ion-option value="en">English</ion-option>
-    <ion-option value="ur">Urdu</ion-option>
+  <ion-select (ionChange)="changeLanguage()" 
+  name="language" 
+  [(ngModel)]="language"
+  okText="{{'OK' | translate}}"
+  cancelText="{{'CANCEL' | translate}}"
+  >
+    <ion-option value="en">{{'EN' | translate}}</ion-option>
+    <ion-option value="ur">{{'UR' | translate}}</ion-option>
   </ion-select>
 </ion-item>
 </ion-content>

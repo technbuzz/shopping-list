@@ -25,7 +25,6 @@ export class EditShoppingItemPage {
 
   ionViewDidLoad() {
     this.shoppingItemRef$.subscribe(res=>{
-      console.log(res);
       this.shoppingItem = res;
     })
   }
