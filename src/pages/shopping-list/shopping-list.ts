@@ -44,40 +44,47 @@ export class ShoppingListPage {
       .subscribe(resp => {
         this.buttonTexts = resp;
       });
+
+    var buttonsAS = [
+      {
+        text: `${this.buttonTexts.EDIT}`,
+        handler: () => {
+          this.navCtrl.push("EditShoppingItemPage", {
+            id: shoppingItem.$key
+          });
+        }
+      },
+      {
+        text: `${this.buttonTexts.REMOVE}`,
+        role: "destructive",
+        handler: () => {
+          this.shoppingListRef$.remove(shoppingItem.$key);
+        }
+      },
+      {
+        text: shoppingItem.completed ? `${this.buttonTexts.PENDING}` : `${this.buttonTexts.DONE}`,
+        handler: () => {
+          this.shoppingListRef$.update(shoppingItem.$key, {
+            completed: (shoppingItem.completed = !shoppingItem.completed)
+          });
+        }
+      },
+      {
+        text: `${this.buttonTexts.CANCEL}`,
+        role: "cancel",
+        handler: () => {
+          console.log("User Selected the cancel option");
+        }
+      }
+    ]
+
+    if(shoppingItem.completed){
+      buttonsAS.splice(0,1);
+    }
+
     let actionSheet = this.asc.create({
       title: `${shoppingItem.itemName}`,
-      buttons: [
-        {
-          text: `${this.buttonTexts.EDIT}`,
-          handler: () => {
-            this.navCtrl.push("EditShoppingItemPage", {
-              id: shoppingItem.$key
-            });
-          }
-        },
-        {
-          text: `${this.buttonTexts.REMOVE}`,
-          role: "destructive",
-          handler: () => {
-            this.shoppingListRef$.remove(shoppingItem.$key);
-          }
-        },
-        {
-          text: shoppingItem.completed ? `${this.buttonTexts.PENDING}` : `${this.buttonTexts.DONE}`,
-          handler: () => {
-            this.shoppingListRef$.update(shoppingItem.$key, {
-              completed: (shoppingItem.completed = !shoppingItem.completed)
-            });
-          }
-        },
-        {
-          text: `${this.buttonTexts.CANCEL}`,
-          role: "cancel",
-          handler: () => {
-            console.log("User Selected the cancel option");
-          }
-        }
-      ]
+      buttons: buttonsAS
     });
 
     actionSheet.present();
