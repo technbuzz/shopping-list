@@ -1,5 +1,11 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ActionSheetController } from 'ionic-angular';
+import {
+  IonicPage,
+  NavController,
+  NavParams,
+  ActionSheetController,
+  AlertController
+} from "ionic-angular";
 
 import { ShoppingItem } from "../../modals/shopping-item/shopping-item.interface";
 import { AngularFireDatabase, FirebaseListObservable } from "angularfire2/database";
@@ -22,13 +28,13 @@ export class ShoppingListPage {
     public navParams: NavParams,
     public db: AngularFireDatabase,
     public asc: ActionSheetController,
-    public translate: TranslateService
+    public translate: TranslateService,
+    public alterCtrl: AlertController
   ) {
     this.shoppingListRef$ = this.db.list("shopping-list");
   }
 
   ionViewDidLoad() {
-    console.log("ionViewDidLoad ShoppingListPage");
   }
 
   viewSettings() {
@@ -91,6 +97,23 @@ export class ShoppingListPage {
   }
 
   clearItems(){
-    alert('This feature is not implemented yet');
+    let confirmAlert = this.alterCtrl.create({
+      title: 'Clear All',
+      message: 'Do you want to remove all the items',
+      buttons: [
+        {
+          text: 'No',
+          handler: () => {}
+        },
+        {
+          text: 'Yes',
+          handler : () => {
+            this.shoppingListRef$.remove();
+          }
+        }
+      ]
+    });// alertCtrl
+
+    confirmAlert.present();
   }
 }
