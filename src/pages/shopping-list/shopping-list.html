@@ -8,7 +8,7 @@
       </button>
       <button ion-button icon-only (click)="addItem()">
         <ion-icon name="add"></ion-icon>
-        
+
       </button>
     </ion-buttons>
     
@@ -34,7 +34,7 @@
   </ng-template>
 
   <ion-fab bottom right>
-    <button color="light" ion-fab mini (click)="clearItems()"><ion-icon name="trash"></ion-icon></button>
+    <button color="light" ion-fab mini (click)="clearItems()" [disabled]="!(shoppingListRef$ | async)?.length"><ion-icon name="trash"></ion-icon></button>
     <button color="secondary" ion-fab (click)="addItem()"><ion-icon name="add" ></ion-icon></button>
   </ion-fab>
 
