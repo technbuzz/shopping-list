@@ -10,6 +10,7 @@ import {
 import { ShoppingItem } from "../../modals/shopping-item/shopping-item.interface";
 import { AngularFireDatabase, FirebaseListObservable } from "angularfire2/database";
 import { TranslateService } from "@ngx-translate/core";
+import { NativeAudio } from '@ionic-native/native-audio';
 
 
 @IonicPage()
@@ -40,12 +41,14 @@ export class ShoppingListPage {
     public db: AngularFireDatabase,
     public asc: ActionSheetController,
     public translate: TranslateService,
-    public alterCtrl: AlertController
+    public alterCtrl: AlertController,
+    public audio: NativeAudio
   ) {
     this.shoppingListRef$ = this.db.list("shopping-list");
   }
 
   ionViewDidLoad() {
+    this.audio.preloadSimple('recycle','assets/sounds/recycle.mp3');
   }
 
   toggleFlip(){
@@ -59,6 +62,7 @@ export class ShoppingListPage {
   addItem() {
     this.navCtrl.push("AddShoppingListPage");
   }
+
   selectShoppingItem(shoppingItem: ShoppingItem) {
     this.translate
       .get(["EDIT", "DONE", "PENDING", "REMOVE", "CANCEL"])
@@ -124,6 +128,9 @@ export class ShoppingListPage {
           text: 'Yes',
           handler : () => {
             this.shoppingListRef$.remove();
+            this.audio.play('recycle', function(){
+              console.log('recycle sound played')
+            })
           }
         }
       ]
