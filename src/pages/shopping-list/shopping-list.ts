@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, trigger, state, style, transition, animate, keyframes } from '@angular/core';
 import {
   IonicPage,
   NavController,
@@ -15,10 +15,21 @@ import { TranslateService } from "@ngx-translate/core";
 @IonicPage()
 @Component({
   selector: "page-shopping-list",
-  templateUrl: "shopping-list.html"
+  templateUrl: "shopping-list.html",
+  animations: [
+    trigger('flip', [
+      state('flipped', style({
+        transform: 'rotate(180deg)',
+        backgroundColor: '#f50e80'
+      })),
+      
+      transition('* => flipped', animate('400ms ease'))
+    ])
+  ]
 })
 export class ShoppingListPage {
   buttonTexts: any;
+  flipState: string = 'notFlipped';
 
   shoppingListRef$;
   loading: boolean = true;
@@ -35,6 +46,10 @@ export class ShoppingListPage {
   }
 
   ionViewDidLoad() {
+  }
+
+  toggleFlip(){
+    this.flipState = this.flipState === 'notFlipped' ? 'Flipped' : 'notFlipped';
   }
 
   viewSettings() {

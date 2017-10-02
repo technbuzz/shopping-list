@@ -32,6 +32,8 @@
     </ion-list>
   </ng-template>
 
+  <button [@flip]="flipped" (click)="toggleFlip()" >Flip</button>
+
   <ion-fab bottom right>
     <button color="light" ion-fab mini (click)="clearItems()"><ion-icon name="trash"></ion-icon></button>
     <button color="secondary" ion-fab (click)="addItem()"><ion-icon name="add" ></ion-icon></button>

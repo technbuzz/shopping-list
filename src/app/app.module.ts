@@ -1,4 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { Http, HttpModule } from "@angular/http";
 import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
@@ -23,6 +24,7 @@ import { PreferencesProvider } from '../providers/preferences/preferences';
   imports: [
     HttpModule,
     BrowserModule,
+    BrowserAnimationsModule,
     IonicModule.forRoot(MyApp),
     AngularFireModule.initializeApp({
       apiKey: "AIzaSyAz2SpbaGMoQ6Lv-_T95pHgaHZKvNuZfC0",
