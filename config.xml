@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='utf-8'?>
 <widget id="io.ionic.starter" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
-    <name>My List</name>
-    <description>An awesome Listing app</description>
+    <name>Shopping List</name>
+    <description>An awesome listing app that use real time database. It also supports Urdu Language</description>
     <author email="samiullah.khan.1989@gmail.com" href="http://technbuzz.com/">Samiullah</author>
     <content src="index.html" />
     <access origin="*" />
